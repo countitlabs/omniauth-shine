@@ -3,7 +3,7 @@ require "omniauth-shine/version"
 
 Gem::Specification.new do |s|
   s.name        = "omniauth-shine"
-  s.version     = Omniauth::Shine::VERSION
+  s.version     = OmniAuth::Shine::VERSION
   s.authors     = ["Mathias Kolehmainen"]
   s.email       = ["mathias@countit.com"]
   s.homepage    = "https://github.com/socialworkout/omniauth-shine"
