@@ -15,11 +15,18 @@ module OmniAuth
       # error when returning via the moves: scheme link.
       # option :provider_ignores_state, true
 
+      uid { raw_info['userId'] }
 
-      # uid { raw_info['userId'] }
-      uid { '12345' }
-      # info do { :firstDate => (raw_info['profile'] || {})['firstDate'] } end
-      info do { :foo => 'fee' } end
+      info do
+        {
+          :name => raw_info['name'],
+          :email => raw_info['email'],
+          :avatar => raw_info['avatar'],
+          :birthday => raw_info['birthday'],
+          :gender => raw_info['gender']
+        }
+      end
+
       extra do { :raw_info => raw_info } end
 
       def request_phase
@@ -32,8 +39,7 @@ module OmniAuth
       end
 
       def raw_info
-        # @raw_info ||= access_token.get('https://api.misfitwearables.com/move/v1/user/me/profile').parsed
-        @raw_info
+        @raw_info ||= access_token.get('/move/resource/v1/user/me/profile').parsed
       end
 
       def callback_url
