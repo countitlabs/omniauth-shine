@@ -36,6 +36,10 @@ module OmniAuth
         @raw_info
       end
 
+      def callback_url
+        options[:callback_url] || (full_host + script_name + callback_path)
+      end
+
       private
 
       def client_params
